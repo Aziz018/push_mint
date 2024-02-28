@@ -49,6 +49,8 @@ SRCS_M = ft_atoi.c \
 		ft_putchar_fd.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
+		get_next_line.c \
+		ft_free.c \
 
 SRCS_B = ft_lstmap_bonus.c \
 		ft_lstdelone_bonus.c \
