@@ -12,6 +12,11 @@ void check_args(int ac, char **av)
     while (i < ac)
     {
         j = 0;
+        if (av[i][j] == '\0')
+        {
+            ft_printf("Error");
+            exit(1);
+        }
         while (av[i][j])
         {
             if (!ft_isdigit(av[i][j]))
@@ -27,7 +32,6 @@ void check_args(int ac, char **av)
 
 int main(int ac, char **av)
 {
-    (void)av;
     if (ac > 1)
     {
         check_args(ac, av);
@@ -40,7 +44,7 @@ int main(int ac, char **av)
         i = 0;
         while (i < ac - 1)
         {
-            ft_printf("strr = %s\n", strr[i]);
+            ft_printf("strr = %s", strr[i]);
             free(strr[i]);
             i++;
         }
