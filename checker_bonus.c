@@ -30,6 +30,19 @@ void check_args(int ac, char **av)
     }
 }
 
+void free_moves(char **strr)
+{
+    int i;
+    
+    i = 0;
+    while (strr[i])
+    {
+        free(strr[i]);
+        i++;
+    }
+    free(strr);
+}
+
 int main(int ac, char **av)
 {
     if (ac > 1)
@@ -41,13 +54,7 @@ int main(int ac, char **av)
         {
             strr[i++] = get_next_line(0);
         }
-        i = 0;
-        while (i < ac - 1)
-        {
-            ft_printf("strr = %s", strr[i]);
-            free(strr[i]);
-            i++;
-        }
-        free(strr);
+        strr[i] = NULL;
+    free_moves(strr);
     }
 }
