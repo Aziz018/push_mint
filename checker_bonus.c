@@ -22,7 +22,7 @@ void	check_args(char **av)
 	while (av[i])
 	{
 		j = 0;
-		if (av[i][j] == '\0')
+		if (av[i][0] == '\0')
             ft_perror("Error");
 		while (av[i][j])
 		{
@@ -168,7 +168,7 @@ int	main(int ac, char **av)
     check_moves(stack_a, stack_b);
 	if (is_empty(stack_a) || !is_empty(stack_b))
 	{
-		ft_printf("Error");
+		ft_printf("KO");
 		clear_stacks(stack_a, stack_b);
 		exit(1);
 	}

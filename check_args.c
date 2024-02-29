@@ -68,6 +68,11 @@ void	check_check(int ac, char **av)
 			}
 			while (j < ac)
 			{
+				if (av[i][j] == '\0')
+				{
+					ft_printf("Error");
+					exit(1);
+				}
 				if (ft_atoi(av[i]) == ft_atoi(av[j]))
 				{
 					ft_printf("error duplicated %d", ft_atoi(av[i]));
