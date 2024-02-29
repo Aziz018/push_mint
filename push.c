@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	push_a(t_stack *stack_a, t_stack *stack_b)
+void	push_a(t_stack *stack_a, t_stack *stack_b, char *str)
 {
 	t_list	*top_a;
 	t_list	*top_b;
@@ -26,11 +26,12 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 		ft_lstadd_front(&top_a, top_b);
 		stack_a->top = top_b;
 		stack_a->last = ft_lstlast(stack_a->top);
-		ft_printf("pa\n");
+		if (str == NULL)
+			ft_printf("pa\n");
 	}
 }
 
-void	push_b(t_stack *stack_a, t_stack *stack_b)
+void	push_b(t_stack *stack_a, t_stack *stack_b, char *str)
 {
 	t_list	*top_a;
 	t_list	*top_b;
@@ -44,6 +45,7 @@ void	push_b(t_stack *stack_a, t_stack *stack_b)
 		ft_lstadd_front(&top_b, top_a);
 		stack_b->top = top_a;
 		stack_b->last = ft_lstlast(stack_b->top);
-		ft_printf("pb\n");
+		if (str == NULL)
+			ft_printf("pb\n");
 	}
 }

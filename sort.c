@@ -34,13 +34,13 @@ void	sort_3(t_stack *stack)
 {
 	stack->max = find_max(stack);
 	while (stack->last->content != stack->max)
-		rotate_a(stack);
+		rotate_a(stack, NULL);
 	if (stack->top->content > stack->top->next->content)
-		swap_a(stack);
+		swap_a(stack, NULL);
 }
 
 void	sort_5_case(t_stack *stack_a, t_stack *stack_b,
-		void (*operation)(t_stack *))
+		void (*operation)(t_stack *, char *))
 {
 	int		i;
 	t_list	*top;
@@ -52,15 +52,15 @@ void	sort_5_case(t_stack *stack_a, t_stack *stack_b,
 		top = stack_a->top;
 		while (top->content != stack_a->min)
 		{
-			operation(stack_a);
+			operation(stack_a, NULL);
 			top = stack_a->top;
 		}
-		push_b(stack_a, stack_b);
+		push_b(stack_a, stack_b, NULL);
 		i--;
 	}
 	sort_3(stack_a);
-	push_a(stack_a, stack_b);
-	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b, NULL);
+	push_a(stack_a, stack_b, NULL);
 }
 
 void	sort_5(t_stack *stack_a, t_stack *stack_b)
@@ -149,9 +149,9 @@ void	push_max_element(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_b->top->content != stack_a->array[stack_a->size])
 	{
-		rotate_b(stack_b);
+		rotate_b(stack_b, NULL);
 	}
-	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b, NULL);
 	stack_a->size -= 1;
 }
 
@@ -161,14 +161,14 @@ void	find_max_push_it(t_stack *stack_a, t_stack *stack_b)
 	if (stack_b->index > (stack_a->size / 2))
 	{
 		while (stack_b->top->content != stack_a->array[stack_a->size])
-			reverse_rotate_b(stack_b);
+			reverse_rotate_b(stack_b, NULL);
 	}
 	else
 	{
 		while (stack_b->top->content != stack_a->array[stack_a->size])
-			rotate_b(stack_b);
+			rotate_b(stack_b, NULL);
 	}
-	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b, NULL);
 	stack_a->size -= 1;
 }
 
@@ -190,15 +190,15 @@ void	stage_1(t_stack *stack_a, t_stack *stack_b, int offset)
 		if (stack_a->top->content >= stack_a->array[start]
 			&& stack_a->top->content <= stack_a->array[end])
 		{
-			push_b(stack_a, stack_b);
+			push_b(stack_a, stack_b, NULL);
 			if (stack_b->top->next
 				&& stack_b->top->content < stack_a->array[middle])
-				rotate_b(stack_b);
+				rotate_b(stack_b, NULL);
 		}
 		else
 		{
 			if (check_range(stack_a, start, end))
-				rotate_a(stack_a);
+				rotate_a(stack_a, NULL);
 			else
 				update_range(&start, &end, offset, size);
 		}
@@ -213,7 +213,7 @@ void	stage_2(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (stack_b->top->content == stack_a->array[stack_a->size])
 		{
-			push_a(stack_a, stack_b);
+			push_a(stack_a, stack_b, NULL);
 			stack_a->size -= 1;
 		}
 		else
@@ -231,19 +231,19 @@ void	stage_3(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (stack_b->top->content == stack_a->array[stack_a->size])
 		{
-			push_a(stack_a, stack_b);
+			push_a(stack_a, stack_b, NULL);
 			stack_a->size -= 1;
 		}
 		else
 		{
 			if (stack_a->last->content == stack_b->max)
 			{
-				push_a(stack_a, stack_b);
-				rotate_a(stack_a);
+				push_a(stack_a, stack_b, NULL);
+				rotate_a(stack_a, NULL);
 			}
 			else if (stack_a->last->content == stack_a->array[stack_a->size])
 			{
-				reverse_rotate_a(stack_a);
+				reverse_rotate_a(stack_a, NULL);
 				stack_a->size -= 1;
 			}
 			else
@@ -251,7 +251,7 @@ void	stage_3(t_stack *stack_a, t_stack *stack_b)
 		}
 	}
 	if (stack_a->last->content < stack_a->top->content)
-		reverse_rotate_a(stack_a);
+		reverse_rotate_a(stack_a, NULL);
 	free(stack_a->array);
 }
 

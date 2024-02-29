@@ -21,7 +21,7 @@ t_list	*ft_lstbflast(t_list *lst)
 	return (lst);
 }
 
-void	reverse_rotate_a(t_stack *stack)
+void	reverse_rotate_a(t_stack *stack, char *str)
 {
 	t_list	*top;
 	t_list	*last;
@@ -36,11 +36,12 @@ void	reverse_rotate_a(t_stack *stack)
 		ft_lstadd_front(&top, last);
 		stack->top = last;
 		stack->last = befor_last;
-		ft_printf("rra\n");
+		if (str == NULL)
+			ft_printf("rra\n");
 	}
 }
 
-void	reverse_rotate_b(t_stack *stack)
+void	reverse_rotate_b(t_stack *stack, char *str)
 {
 	t_list	*top;
 	t_list	*last;
@@ -55,13 +56,15 @@ void	reverse_rotate_b(t_stack *stack)
 		ft_lstadd_front(&top, last);
 		stack->top = last;
 		stack->last = befor_last;
-		ft_printf("rrb\n");
+		if (str == NULL)	
+			ft_printf("rrb\n");
 	}
 }
 
-void	rra_rrb(t_stack *stack_a, t_stack *stack_b)
+void	rra_rrb(t_stack *stack_a, t_stack *stack_b, char *str)
 {
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
-	ft_printf("rrr\n");
+	reverse_rotate_a(stack_a, str);
+	reverse_rotate_b(stack_b, str);
+	if (str == NULL)
+		ft_printf("rrr\n");
 }

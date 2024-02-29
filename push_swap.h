@@ -41,17 +41,17 @@ t_list		*ft_lstbflast(t_list *lst);
 int			is_empty(t_stack *stack);
 int			is_full(t_stack *stack, int ac);
 int			pop(t_stack *stack);
-void		swap_a(t_stack *stack);
-void		swap_b(t_stack *stack);
-void		sa_sb(t_stack *stack_a, t_stack *stack_b);
-void		rotate_a(t_stack *stack);
-void		rotate_b(t_stack *stack);
-void		ra_rb(t_stack *stack_a, t_stack *stack_b);
-void		push_a(t_stack *stack_a, t_stack *stack_b);
-void		push_b(t_stack *stack_a, t_stack *stack_b);
-void		reverse_rotate_a(t_stack *stack);
-void		reverse_rotate_b(t_stack *stack);
-void		rra_rrb(t_stack *stack_a, t_stack *stack_b);
+void		swap_a(t_stack *stack, char *str);
+void		swap_b(t_stack *stack, char *str);
+void		sa_sb(t_stack *stack_a, t_stack *stack_b, char *str);
+void		rotate_a(t_stack *stack, char *str);
+void		rotate_b(t_stack *stack, char *str);
+void		ra_rb(t_stack *stack_a, t_stack *stack_b, char *str);
+void		push_a(t_stack *stack_a, t_stack *stack_b, char *str);
+void		push_b(t_stack *stack_a, t_stack *stack_b, char *str);
+void		reverse_rotate_a(t_stack *stack, char *str);
+void		reverse_rotate_b(t_stack *stack, char *str);
+void		rra_rrb(t_stack *stack_a, t_stack *stack_b, char *str);
 
 int			find_max(t_stack *stack);
 int			find_min(t_stack *stack);
@@ -70,7 +70,7 @@ char		*arry_to_str(int ac, char **arr);
 int			is_sorted(t_stack *stack);
 void		sort_3(t_stack *stack);
 void		sort_args(t_stack *stack_a, t_stack *stack_b);
-void		sort_5_case(t_stack *stack_a, t_stack *stack_b,
-				void (*operation)(t_stack *));
+void	sort_5_case(t_stack *stack_a, t_stack *stack_b,
+		void (*operation)(t_stack *, char *));
 
 #endif
