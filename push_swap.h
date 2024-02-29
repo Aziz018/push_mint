@@ -62,10 +62,10 @@ void		print_args(t_stack *stack_a, t_stack *stack_b);
 
 // int			*find_lis_sequence(t_stack *stack, int *len);
 
-void	print_args(t_stack *stack_a, t_stack *stack_b);
+void		print_args(t_stack *stack_a, t_stack *stack_b);
 
-char 		**read_input(int ac, char **av);
-char 		*arry_to_str(int ac, char **arr);
+char		**read_input(int ac, char **av);
+char		*arry_to_str(int ac, char **arr);
 
 int			is_sorted(t_stack *stack);
 void		sort_3(t_stack *stack);

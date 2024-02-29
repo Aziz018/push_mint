@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 int	find_index(t_stack *stack, int num)
 {
 	int		i;
@@ -274,7 +273,6 @@ void	sort_args(t_stack *stack_a, t_stack *stack_b)
 		stage_1(stack_a, stack_b, offset);
 		stage_2(stack_a, stack_b);
 		print_args(stack_a, stack_b);
-
 	}
 	else if (stack_a->size <= 100)
 	{
@@ -282,7 +280,6 @@ void	sort_args(t_stack *stack_a, t_stack *stack_b)
 		stage_1(stack_a, stack_b, offset);
 		stage_2(stack_a, stack_b);
 		print_args(stack_a, stack_b);
-
 	}
 	else
 	{

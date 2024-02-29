@@ -2,8 +2,8 @@
 
 int	is_sorted(t_stack *stack)
 {
-	t_list	*top;
-	t_list	*tmp;
+	t_list *top;
+	t_list *tmp;
 
 	if (stack->top == NULL)
 		return (0);

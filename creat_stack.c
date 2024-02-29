@@ -12,10 +12,11 @@
 
 #include "push_swap.h"
 
-void free_it(char **strr)
+void	free_it(char **strr)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	while (strr[i])
 	{
 		free(strr[i]);
@@ -29,12 +30,15 @@ void	creat_stack(t_stack *stack, int ac, char **av)
 	int		i;
 	t_list	*head;
 	t_list	*node;
+	char	**array;
+	char	*str;
+	char	**strr;
 
 	i = 0;
 	head = NULL;
-	char **array = read_input(ac, av);
-    char *str = arry_to_str(ac, array);
-	char **strr = ft_split(str, ' ');
+	array = read_input(ac, av);
+	str = arry_to_str(ac, array);
+	strr = ft_split(str, ' ');
 	// while (i < ac)
 	while (strr[i])
 	{
