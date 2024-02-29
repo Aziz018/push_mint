@@ -47,7 +47,7 @@ void	reverse_rotate_b(t_stack *stack, char *str)
 	t_list	*last;
 	t_list	*befor_last;
 
-	if (!is_empty(stack))
+	if (stack->top && stack->top->next)
 	{
 		top = stack->top;
 		last = ft_lstlast(stack->top);
@@ -63,8 +63,11 @@ void	reverse_rotate_b(t_stack *stack, char *str)
 
 void	rra_rrb(t_stack *stack_a, t_stack *stack_b, char *str)
 {
-	reverse_rotate_a(stack_a, str);
-	reverse_rotate_b(stack_b, str);
-	if (str == NULL)
-		ft_printf("rrr\n");
+	if (stack_a->top && stack_a->top->next && stack_b->top && stack_b->top->next)
+	{
+		reverse_rotate_a(stack_a, str);
+		reverse_rotate_b(stack_b, str);
+		if (str == NULL)
+			ft_printf("rrr\n");
+	}
 }

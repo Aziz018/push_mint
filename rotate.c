@@ -17,14 +17,17 @@ void	rotate_a(t_stack *stack, char *str)
 	t_list	*top;
 	t_list	*last;
 
-	top = stack->top;
-	last = ft_lstlast(stack->top);
-	stack->top = stack->top->next;
-	last->next = top;
-	top->next = NULL;
-	stack->last = top;
-	if (str == NULL)
-		ft_printf("ra\n");
+	if (stack->top && stack->top->next)
+	{
+		top = stack->top;
+		last = ft_lstlast(stack->top);
+		stack->top = stack->top->next;
+		last->next = top;
+		top->next = NULL;
+		stack->last = top;
+		if (str == NULL)
+			ft_printf("ra\n");
+	}
 }
 
 void	rotate_b(t_stack *stack, char *str)
@@ -32,20 +35,26 @@ void	rotate_b(t_stack *stack, char *str)
 	t_list	*top;
 	t_list	*last;
 
-	top = stack->top;
-	last = ft_lstlast(stack->top);
-	stack->top = stack->top->next;
-	last->next = top;
-	top->next = NULL;
-	stack->last = top;
-	if (str == NULL)
-		ft_printf("rb\n");
+	if (stack->top && stack->top->next)
+	{
+		top = stack->top;
+		last = ft_lstlast(stack->top);
+		stack->top = stack->top->next;
+		last->next = top;
+		top->next = NULL;
+		stack->last = top;
+		if (str == NULL)
+			ft_printf("rb\n");
+	}
 }
 
 void	ra_rb(t_stack *stack_a, t_stack *stack_b, char *str)
 {
-	rotate_a(stack_a, str);
-	rotate_b(stack_b, str);
-	if (str == NULL)
-		ft_printf("rr\n");
+	if (stack_a->top && stack_a->top->next && stack_b->top && stack_b->top->next)
+	{
+		rotate_a(stack_a, str);
+		rotate_b(stack_b, str);
+		if (str == NULL)
+			ft_printf("rr\n");
+	}
 }
