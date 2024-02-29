@@ -107,7 +107,7 @@ void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)
 	else if (move[0] == 'r' && ft_strlen(move) == 3)
 		rotate(move, stack_a, stack_b);
 	else if (move[0] == 'r' && move[1] == 'r')
-		rotate(move, stack_a, stack_b);
+		reverse_rotate(move, stack_a, stack_b);
 	else
 	{
 		ft_printf("Error");
@@ -176,6 +176,6 @@ int	main(int ac, char **av)
 		ft_printf("KO");
 	else
 		ft_printf("Ok");
-	print_args(stack_a, stack_b);
+	// print_args(stack_a, stack_b);
 	clear_stacks(stack_a, stack_b);
 }

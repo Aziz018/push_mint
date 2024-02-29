@@ -35,19 +35,19 @@ int	main(int ac, char **av)
 	stack_a->min = find_min(stack_a);
 	stack_a->size = ft_lstsize(stack_a->top);
 	sort_args(stack_a, stack_b);
-	// if (is_sorted(stack_a))
-	// {
-		// ft_printf("\x1b[1;32m");
-		// ft_printf("\n     _                  \n");
-		// ft_printf("  __| | ___  _ __   ___ \n");
-		// ft_printf(" / _` |/ _ \\| '_ \\ / _ \\\n");
-		// ft_printf("| (_| | (_) | | | |  __/\n");
-		// ft_printf(" \\__,_|\\___/|_| |_|\\___|\n\n");
+	if (is_sorted(stack_a))
+	{
+		ft_printf("\x1b[1;32m");
+		ft_printf("\n     _                  \n");
+		ft_printf("  __| | ___  _ __   ___ \n");
+		ft_printf(" / _` |/ _ \\| '_ \\ / _ \\\n");
+		ft_printf("| (_| | (_) | | | |  __/\n");
+		ft_printf(" \\__,_|\\___/|_| |_|\\___|\n\n");
 		// ft_printf("\ndone\n");
-		// ft_printf("\x1b[0m");
-	// }
-	// else
-	// 	ft_printf("not sorted\n");
+		ft_printf("\x1b[0m");
+	}
+	else
+		ft_printf("not sorted\n");
 	ft_clear_stack(stack_a);
 	ft_clear_stack(stack_b);
 	return (0);
