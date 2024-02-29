@@ -1,10 +1,5 @@
 #include "push_swap.h"
 
-void checker()
-{
-
-}
-
 void check_args(int ac, char **av)
 {
     int i = 1;
@@ -134,22 +129,22 @@ int main(int ac, char **av)
     stack_a->top = NULL;
     stack_b->top = NULL;
     creat_stack(stack_a, ac, av);
-    char **strr = malloc(ac * sizeof(char *));
+    // char **strr = malloc(ac * sizeof(char *));
+    char *str;
     int i = 0;
-    strr[i] = get_next_line(0);
-    while (strr[i] && strr[i][0] != '\n')
+    str = get_next_line(0);
+    while (str && str[0] != '\n')
     {
-        which_move(strr[i], stack_a, stack_b);
+        which_move(str, stack_a, stack_b);
         i++;
-        strr[i] = get_next_line(0);
+        free(str);
+        str = get_next_line(0);
     }
-    strr[++i] = NULL;
     if (is_empty(stack_a) || !is_empty(stack_b))
     {
         ft_printf("Error");
         ft_clear_stack(stack_a);
         ft_clear_stack(stack_b);
-        free_moves(strr);
         print_args(stack_a, stack_b);
         exit(1);
     }
@@ -160,5 +155,4 @@ int main(int ac, char **av)
     print_args(stack_a, stack_b);
     ft_clear_stack(stack_a);
     ft_clear_stack(stack_b);
-    free_moves(strr);
 }
