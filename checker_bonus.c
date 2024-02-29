@@ -58,7 +58,7 @@ int ft_strstr(char *str1, char *str2)
     return 0;
 }
 
-void what_move(char *move, t_stack *stack_a, t_stack *stack_b)
+void swap(char *move, t_stack *stack_a, t_stack *stack_b)
 {
     if (ft_strstr(move, "sa"))
         swap_a(stack_a);
@@ -69,11 +69,18 @@ void what_move(char *move, t_stack *stack_a, t_stack *stack_b)
         swap_a(stack_a);
         swap_b(stack_b);
     }
-    else if (ft_strstr(move, "pa"))
+}
+void push(char *move, t_stack *stack_a, t_stack *stack_b)
+{
+    if (ft_strstr(move, "pa"))
         push_a(stack_a, stack_b);
     else if (ft_strstr(move, "pb"))
         push_b(stack_a, stack_b);
-    else if (ft_strstr(move, "ra"))
+}
+
+void rotate(char *move, t_stack *stack_a, t_stack *stack_b)
+{
+    if (ft_strstr(move, "ra"))
         rotate_a(stack_a);
     else if (ft_strstr(move, "rb"))
         rotate_b(stack_b);
@@ -82,7 +89,11 @@ void what_move(char *move, t_stack *stack_a, t_stack *stack_b)
         rotate_a(stack_a);
         rotate_b(stack_b);
     }
-    else if (ft_strstr(move, "rra"))
+}
+
+void reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b)
+{
+    if (ft_strstr(move, "rra"))
         reverse_rotate_a(stack_a);
     else if (ft_strstr(move, "rrb"))
         reverse_rotate_b(stack_b);
@@ -91,6 +102,18 @@ void what_move(char *move, t_stack *stack_a, t_stack *stack_b)
         reverse_rotate_a(stack_a);
         reverse_rotate_b(stack_b);
     }
+}
+
+void which_move(char *move, t_stack *stack_a, t_stack *stack_b)
+{
+    if (move[0] == 's')
+        swap(move, stack_a, stack_b);
+    else if (move[0] == 'p')
+        push(move, stack_a, stack_b);
+    else if (move[0] == 'r' && ft_strlen(move) == 3)
+        rotate(move, stack_a, stack_b);
+    else if (move[0] == 'r' && move[1] == 'r')
+        rotate(move, stack_a, stack_b);
     else
     {
         ft_printf("Error");
@@ -114,25 +137,26 @@ int main(int ac, char **av)
     char **strr = malloc(ac * sizeof(char *));
     int i = 0;
     strr[i] = get_next_line(0);
-    while (strr[i])
+    while (strr[i] && strr[i][0] != '\n')
     {
-        strr[i] = get_next_line(0);
-        what_move(strr[i], stack_a, stack_b);
+        which_move(strr[i], stack_a, stack_b);
         i++;
+        strr[i] = get_next_line(0);
     }
-    strr[i] = NULL;
+    strr[++i] = NULL;
     if (is_empty(stack_a) || !is_empty(stack_b))
     {
         ft_printf("Error");
         ft_clear_stack(stack_a);
         ft_clear_stack(stack_b);
         free_moves(strr);
+        print_args(stack_a, stack_b);
         exit(1);
     }
     if (!is_sorted(stack_a))
-        ft_printf("KO");
+        ft_printf("KO\n");
     else
-        ft_printf("Ok");
+        ft_printf("Ok\n");
     print_args(stack_a, stack_b);
     ft_clear_stack(stack_a);
     ft_clear_stack(stack_b);
