@@ -8,7 +8,7 @@ if [ "$confirm" = "y" ]; then
     echo "enter your msg"
     # read msg
     git commit -m "push_swap"
-    git push origin main 
+    git push origin main -f
 else
     echo "No changes were pushed to GitHub."
 fi
