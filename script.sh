@@ -1,7 +1,7 @@
 #!/bin/sh
 
-make re
-make clean
+# make re
+make fclean
 
 read -p "Do you want to push changes to GitHub? (y/n): " confirm
 if [ "$confirm" = "y" ]; then
