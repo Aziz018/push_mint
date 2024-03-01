@@ -59,46 +59,6 @@ void	check_args(char **av)
 	}
 }
 
-// void	check_check(int ac, char **av)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	if (ac < 2)
-// 	{
-// 		ft_printf("error");
-// 		exit(1);
-// 	}
-// 	if (ac > 1)
-// 	{
-// 		i = 1;
-// 		while (i < ac)
-// 		{
-// 			j = i + 1;
-// 			if (av[i][0] == '\0')
-// 			{
-// 				ft_printf("Error");
-// 				exit(1);
-// 			}
-// 			if (ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
-// 			{
-// 				ft_printf("Error");
-// 				exit(1);
-// 			}
-// 			while (j < ac)
-// 			{
-// 				if (ft_atoi(av[i]) == ft_atoi(av[j]))
-// 				{
-// 					ft_printf("Error");
-// 					exit(1);
-// 				}
-// 				j++;
-// 			}
-// 			i++;
-// 		}
-// 	}
-// }
-
 int	find_max(t_stack *stack)
 {
 	int		max;
