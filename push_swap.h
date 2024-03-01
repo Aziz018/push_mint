@@ -55,14 +55,12 @@ void		rra_rrb(t_stack *stack_a, t_stack *stack_b, char *str);
 
 int			find_max(t_stack *stack);
 int			find_min(t_stack *stack);
-void		check_check(int ac, char **av);
 void		creat_stack(t_stack *stack, int ac, char **av);
 void		ft_clear_stack(t_stack *stack);
 void		print_args(t_stack *stack_a, t_stack *stack_b);
 
 // int			*find_lis_sequence(t_stack *stack, int *len);
 
-void		print_args(t_stack *stack_a, t_stack *stack_b);
 
 char		**read_input(int ac, char **av);
 char		*arry_to_str(int ac, char **arr);

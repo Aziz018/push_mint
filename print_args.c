@@ -12,34 +12,26 @@
 
 #include "push_swap.h"
 
+void print_stack(t_stack *stack, char *str)
+{
+	t_list	*tmp;
+
+	tmp = stack->top;
+	ft_printf("=======\n");
+	while (tmp)
+	{
+		ft_printf("| %d |\n", tmp->content);
+		tmp = tmp->next;
+	}
+	if (is_empty(stack))
+		ft_printf("empty <= ");
+	ft_printf("%s\n", str);
+	ft_printf("=======\n");
+}
+
 void	print_args(t_stack *stack_a, t_stack *stack_b)
 {
-	t_list	*tmp1;
-	t_list	*tmp2;
+	print_stack(stack_a, "stack_a");
+	print_stack(stack_b, "stack_b");
 
-	tmp1 = stack_a->top;
-	tmp2 = stack_b->top;
-	ft_printf("=======\n");
-	while (tmp1)
-	{
-		ft_printf("| %d |\n", tmp1->content);
-		tmp1 = tmp1->next;
-	}
-	if (is_empty(stack_a))
-		ft_printf("empty <= ");
-	ft_printf("stack a\n");
-	ft_printf("=======\n");
-	ft_printf("=======\n");
-	while (tmp2)
-	{
-		if (!is_empty(stack_b))
-		{
-			ft_printf("| %d |\n", tmp2->content);
-			tmp2 = tmp2->next;
-		}
-	}
-	if (is_empty(stack_b))
-		ft_printf("empty <= ");
-	ft_printf("stack b\n");
-	ft_printf("=======\n");
 }
