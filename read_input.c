@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+void is_str_empty(char *str)
+{
+	int i = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '\0')
+		ft_perror("Error");
+}
+
 char	**read_input(int ac, char **av)
 {
 	char	**arr;
@@ -12,9 +21,8 @@ char	**read_input(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
-		if (av[i][j] == '\0')
-			ft_perror("Error");
-		else if (ft_strlen(av[i]) > 11)
+		is_str_empty(av[i]);
+		if (av[i][0] == '\0')
 			ft_perror("Error");
 		arr[i - 1] = malloc(ft_strlen(av[i]) * sizeof(char) + 1);
 		while (av[i][j])

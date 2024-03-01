@@ -25,11 +25,16 @@ int	main(int ac, char **av)
 	// ft_printf("| .__/ \\__,_|___/_| |_|___|___/ \\_/\\_/ \\__,_| .__/ \n");
 	// ft_printf("|_|                  |_____|                |_|    \n\n\n");
 	// ft_printf("\033[0m");
+	char **arr = read_input(ac, av);
+	char *str = arry_to_str(ac, arr);
+	char **arrr = ft_split(str, ' ');
+	check_args(arrr);
+	free_all(str, arr, arrr);
+	// check_check(ac, av);
 	stack_a = malloc(sizeof(t_stack));
 	stack_b = malloc(sizeof(t_stack));
 	stack_a->top = NULL;
 	stack_b->top = NULL;
-	check_check(ac, av);
 	creat_stack(stack_a, ac, av);
 	stack_a->max = find_max(stack_a);
 	stack_a->min = find_min(stack_a);

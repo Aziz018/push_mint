@@ -1,11 +1,38 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 NAME = push_swap
 NAME_BONUS = checker
 LIBFT = ./libft/libft.a
 FT_PRINTF = ./ft_printf/libftprintf.a
-SRCS = check_args.c creat_stack.c operations.c push.c reverse_rotate.c rotate.c sort.c swap.c push_swap.c read_input.c is_sorted.c check_errors.c
-SRCS_BONUS = checker_bonus.c check_args.c creat_stack.c operations.c push.c reverse_rotate.c rotate.c swap.c read_input.c is_sorted.c check_errors.c
+SRCS = push_swap.c \
+		check_args.c \
+		creat_stack.c \
+		operations.c \
+		push.c \
+		reverse_rotate.c \
+		rotate.c \
+		sort.c \
+		swap.c \
+		read_input.c \
+		is_sorted.c \
+		check_errors.c \
+		ft_clean.c \
+		print_args.c \
+		
+
+SRCS_BONUS = checker_bonus.c \
+			check_args.c \
+			creat_stack.c \
+			operations.c \
+			push.c \
+			reverse_rotate.c \
+			rotate.c \
+			swap.c \
+			read_input.c \
+			is_sorted.c \
+			check_errors.c \
+			ft_clean.c \
+			
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 

@@ -1,58 +1,5 @@
 #include "push_swap.h"
 
-void	clear_stacks(t_stack *stack_a, t_stack *stack_b)
-{
-	ft_clear_stack(stack_a);
-	ft_clear_stack(stack_b);
-}
-
-void	is_duplicated(char **av)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (av[i])
-	{
-		j = i + 1;
-		while (av[j])
-		{
-			if (ft_atoi(av[i]) == ft_atoi(av[j]))
-				ft_perror("Error");
-			j++;
-		}
-		i++;
-	}
-}
-
-void	check_args(char **av)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	is_duplicated(av);
-	while (av[i])
-	{
-		j = 0;
-		if (av[i][0] == '\0')
-			ft_perror("Error");
-		while (av[i][j])
-		{
-			if (!ft_isdigit(av[i][j]))
-				ft_perror("Error");
-			if (av[i][j] == '\t')
-				ft_perror("Error");
-			j++;
-		}
-		if (ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
-			ft_perror("Error");
-		i++;
-	}
-}
-
 int	ft_strstr(char *str1, char *str2)
 {
 	int	i;
@@ -143,26 +90,6 @@ void	check_moves(t_stack *stack_a, t_stack *stack_b)
 		free(str);
 		str = get_next_line(0);
 	}
-	free(str);
-}
-
-void	free_arr(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
-void	free_all(char *str, char **arr, char **arrr)
-{
-	free_arr(arrr);
-	free_arr(arr);
 	free(str);
 }
 
