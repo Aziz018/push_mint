@@ -39,7 +39,6 @@ void	creat_stack(t_stack *stack, int ac, char **av)
 	array = read_input(ac, av);
 	str = arry_to_str(ac, array);
 	strr = ft_split(str, ' ');
-	// while (i < ac)
 	while (strr[i])
 	{
 		node = ft_lstnew(ft_atoi(strr[i]));
@@ -67,5 +66,4 @@ void	ft_clear_stack(t_stack *stack)
 		free(tmp);
 	}
 	free(stack);
-	// stack->top = NULL;
 }

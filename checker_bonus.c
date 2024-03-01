@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelkheta <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 17:40:04 by aelkheta          #+#    #+#             */
+/*   Updated: 2024/03/01 17:40:07 by aelkheta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_strstr(char *str1, char *str2)
@@ -68,7 +80,6 @@ void	reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b)
 	}
 	else
 		ft_perror("Error");
-
 }
 
 void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)

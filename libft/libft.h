@@ -22,7 +22,6 @@
 
 # endif
 
-
 typedef struct s_list
 {
 	int				content;

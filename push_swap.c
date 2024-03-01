@@ -16,6 +16,9 @@ int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	**arr;
+	char	*str;
+	char	**arrr;
 
 	// ft_printf("\033[1;33m");
 	// ft_printf("                 _                                 \n");
@@ -25,10 +28,9 @@ int	main(int ac, char **av)
 	// ft_printf("| .__/ \\__,_|___/_| |_|___|___/ \\_/\\_/ \\__,_| .__/ \n");
 	// ft_printf("|_|                  |_____|                |_|    \n\n\n");
 	// ft_printf("\033[0m");
-
-	char **arr = read_input(ac, av);
-	char *str = arry_to_str(ac, arr);
-	char **arrr = ft_split(str, ' ');
+	arr = read_input(ac, av);
+	str = arry_to_str(ac, arr);
+	arrr = ft_split(str, ' ');
 	check_args(arrr);
 	free_all(str, arr, arrr);
 	// check_check(ac, av);
@@ -41,7 +43,6 @@ int	main(int ac, char **av)
 	stack_a->min = find_min(stack_a);
 	stack_a->size = ft_lstsize(stack_a->top);
 	sort_args(stack_a, stack_b);
-	
 	// if (is_sorted(stack_a))
 	// {
 	// 	ft_printf("\x1b[1;32m");

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelkheta <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 17:39:08 by aelkheta          #+#    #+#             */
+/*   Updated: 2024/03/01 17:39:46 by aelkheta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	print_args(t_stack *stack_a, t_stack *stack_b)
@@ -6,7 +18,6 @@ void	print_args(t_stack *stack_a, t_stack *stack_b)
 	t_list	*tmp2;
 
 	tmp1 = stack_a->top;
-	// (void)stack_b;
 	tmp2 = stack_b->top;
 	ft_printf("=======\n");
 	while (tmp1)
