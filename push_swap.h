@@ -61,7 +61,6 @@ void		print_args(t_stack *stack_a, t_stack *stack_b);
 
 // int			*find_lis_sequence(t_stack *stack, int *len);
 
-
 char		**read_input(int ac, char **av);
 char		*arry_to_str(int ac, char **arr);
 

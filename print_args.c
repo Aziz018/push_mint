@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void print_stack(t_stack *stack, char *str)
+void	print_stack(t_stack *stack, char *str)
 {
 	t_list	*tmp;
 
@@ -33,5 +33,4 @@ void	print_args(t_stack *stack_a, t_stack *stack_b)
 {
 	print_stack(stack_a, "stack_a");
 	print_stack(stack_b, "stack_b");
-
 }
