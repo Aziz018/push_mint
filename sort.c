@@ -171,6 +171,12 @@ void	find_max_push_it(t_stack *stack_a, t_stack *stack_b)
 	push_a(stack_a, stack_b, NULL);
 	stack_a->size -= 1;
 }
+void	push_and_rotate(t_stack *stack_a, t_stack *stack_b, int middle)
+{
+	push_b(stack_a, stack_b, NULL);
+	if (stack_b->top->next && stack_b->top->content < stack_a->array[middle])
+		rotate_b(stack_b, NULL);
+}
 
 void	stage_1(t_stack *stack_a, t_stack *stack_b, int offset)
 {
@@ -189,12 +195,7 @@ void	stage_1(t_stack *stack_a, t_stack *stack_b, int offset)
 	{
 		if (stack_a->top->content >= stack_a->array[start]
 			&& stack_a->top->content <= stack_a->array[end])
-		{
-			push_b(stack_a, stack_b, NULL);
-			if (stack_b->top->next
-				&& stack_b->top->content < stack_a->array[middle])
-				rotate_b(stack_b, NULL);
-		}
+			push_and_rotate(stack_a, stack_b, middle);
 		else
 		{
 			if (check_range(stack_a, start, end))
@@ -223,7 +224,6 @@ void	stage_2(t_stack *stack_a, t_stack *stack_b)
 }
 void	stage_3(t_stack *stack_a, t_stack *stack_b)
 {
-	// int flag = 1;
 	stack_a->size -= 1;
 	stack_b->max = stack_a->array[stack_a->size];
 	push_max_element(stack_a, stack_b);
@@ -255,13 +255,11 @@ void	stage_3(t_stack *stack_a, t_stack *stack_b)
 	free(stack_a->array);
 }
 
-void	sort_args(t_stack *stack_a, t_stack *stack_b)
+void	under_10(t_stack *stack_a, t_stack *stack_b)
 {
 	int	offset;
 
-	if (stack_a->top == NULL)
-		exit(0);
-	else if (is_sorted(stack_a))
+	if (is_sorted(stack_a))
 		exit(0);
 	else if (stack_a->size <= 3)
 		sort_3(stack_a);
@@ -274,18 +272,32 @@ void	sort_args(t_stack *stack_a, t_stack *stack_b)
 		stage_2(stack_a, stack_b);
 		print_args(stack_a, stack_b);
 	}
-	else if (stack_a->size <= 100)
+}
+
+void	over_10(t_stack *stack_a, t_stack *stack_b)
+{
+	int	offset;
+
+	if (stack_a->size <= 100)
 	{
 		offset = stack_a->size / 10;
 		stage_1(stack_a, stack_b, offset);
 		stage_2(stack_a, stack_b);
-		print_args(stack_a, stack_b);
 	}
 	else
 	{
 		offset = stack_a->size / 18;
 		stage_1(stack_a, stack_b, offset);
 		stage_3(stack_a, stack_b);
-		print_args(stack_a, stack_b);
 	}
+}
+
+void	sort_args(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->top == NULL)
+		exit(0);
+	else if (stack_a->size <= 10)
+		under_10(stack_a, stack_b);
+	else if (stack_a->size > 10)
+		over_10(stack_a, stack_b);
 }
