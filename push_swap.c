@@ -43,8 +43,8 @@ int	main(int ac, char **av)
 	// 	ft_printf(" / _` |/ _ \\| '_ \\ / _ \\\n");
 	// 	ft_printf("| (_| | (_) | | | |  __/\n");
 	// 	ft_printf(" \\__,_|\\___/|_| |_|\\___|\n\n");
-		// ft_printf("\ndone\n");
-		// ft_printf("\x1b[0m");
+	// ft_printf("\ndone\n");
+	// ft_printf("\x1b[0m");
 	// }
 	// else
 	// 	ft_printf("not sorted\n");

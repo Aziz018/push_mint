@@ -70,23 +70,21 @@ char		*arry_to_str(int ac, char **arr);
 int			is_sorted(t_stack *stack);
 void		sort_3(t_stack *stack);
 void		sort_args(t_stack *stack_a, t_stack *stack_b);
-void	sort_5_case(t_stack *stack_a, t_stack *stack_b,
-		void (*operation)(t_stack *, char *));
+void		sort_5_case(t_stack *stack_a, t_stack *stack_b,
+				void (*operation)(t_stack *, char *));
 
-
-// void	clear_stacks(t_stack *stack_a, t_stack *stack_b);
-// void ft_perror(char *str);
-// void is_duplicated(char **av);
-// void	check_args(char **av);
-// int	ft_strstr(char *str1, char *str2);
-// void	swap(char *move, t_stack *stack_a, t_stack *stack_b);
-// void	push(char *move, t_stack *stack_a, t_stack *stack_b);
-// void	rotate(char *move, t_stack *stack_a, t_stack *stack_b);
-// void	reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b);
-// void	which_move(char *move, t_stack *stack_a, t_stack *stack_b);
-// void check_moves(t_stack *stack_a, t_stack *stack_b);
-// void free_arr(char **arr);
-// void free_all(char *str, char **arr, char **arrr);
-
+void		clear_stacks(t_stack *stack_a, t_stack *stack_b);
+void		ft_perror(char *str);
+void		is_duplicated(char **av);
+void		check_args(char **av);
+int			ft_strstr(char *str1, char *str2);
+void		swap(char *move, t_stack *stack_a, t_stack *stack_b);
+void		push(char *move, t_stack *stack_a, t_stack *stack_b);
+void		rotate(char *move, t_stack *stack_a, t_stack *stack_b);
+void		reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b);
+void		which_move(char *move, t_stack *stack_a, t_stack *stack_b);
+void		check_moves(t_stack *stack_a, t_stack *stack_b);
+void		free_arr(char **arr);
+void		free_all(char *str, char **arr, char **arrr);
 
 #endif

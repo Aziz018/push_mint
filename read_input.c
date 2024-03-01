@@ -12,6 +12,10 @@ char	**read_input(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
+		if (av[i][j] == '\0')
+			ft_perror("Error");
+		else if (ft_strlen(av[i]) > 11)
+			ft_perror("Error");
 		arr[i - 1] = malloc(ft_strlen(av[i]) * sizeof(char) + 1);
 		while (av[i][j])
 		{

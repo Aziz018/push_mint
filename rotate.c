@@ -50,7 +50,8 @@ void	rotate_b(t_stack *stack, char *str)
 
 void	ra_rb(t_stack *stack_a, t_stack *stack_b, char *str)
 {
-	if (stack_a->top != NULL && stack_a->top->next != NULL && stack_b->top != NULL && stack_b->top->next != NULL)
+	if (stack_a->top != NULL && stack_a->top->next != NULL
+		&& stack_b->top != NULL && stack_b->top->next != NULL)
 	{
 		rotate_a(stack_a, str);
 		rotate_b(stack_b, str);

@@ -56,14 +56,15 @@ void	reverse_rotate_b(t_stack *stack, char *str)
 		ft_lstadd_front(&top, last);
 		stack->top = last;
 		stack->last = befor_last;
-		if (str == NULL)	
+		if (str == NULL)
 			ft_printf("rrb\n");
 	}
 }
 
 void	rra_rrb(t_stack *stack_a, t_stack *stack_b, char *str)
 {
-	if (stack_a->top && stack_a->top->next && stack_b->top && stack_b->top->next)
+	if (stack_a->top && stack_a->top->next && stack_b->top
+		&& stack_b->top->next)
 	{
 		reverse_rotate_a(stack_a, str);
 		reverse_rotate_b(stack_b, str);

@@ -6,24 +6,20 @@ void	clear_stacks(t_stack *stack_a, t_stack *stack_b)
 	ft_clear_stack(stack_b);
 }
 
-void ft_perror(char *str)
+void	is_duplicated(char **av)
 {
-    ft_printf(str);
-	exit(1);
-}
+	int	i;
+	int	j;
 
-void is_duplicated(char **av)
-{
-	int i = 0;
-	int j = 0;
-
+	i = 0;
+	j = 0;
 	while (av[i])
 	{
 		j = i + 1;
 		while (av[j])
 		{
 			if (ft_atoi(av[i]) == ft_atoi(av[j]))
-            	ft_perror("Error");
+				ft_perror("Error");
 			j++;
 		}
 		i++;
@@ -42,17 +38,17 @@ void	check_args(char **av)
 	{
 		j = 0;
 		if (av[i][0] == '\0')
-            ft_perror("Error");
+			ft_perror("Error");
 		while (av[i][j])
 		{
 			if (!ft_isdigit(av[i][j]))
-                ft_perror("Error");
-            if (av[i][j] == '\t')
-                ft_perror("Error");
+				ft_perror("Error");
+			if (av[i][j] == '\t')
+				ft_perror("Error");
 			j++;
 		}
 		if (ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
-			    ft_perror("Error");
+			ft_perror("Error");
 		i++;
 	}
 }
@@ -136,23 +132,25 @@ void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void check_moves(t_stack *stack_a, t_stack *stack_b)
+void	check_moves(t_stack *stack_a, t_stack *stack_b)
 {
-    char *str;
+	char	*str;
 
 	str = get_next_line(0);
-    while (str)
+	while (str)
 	{
 		which_move(str, stack_a, stack_b);
 		free(str);
 		str = get_next_line(0);
 	}
-    free(str);
+	free(str);
 }
 
-void free_arr(char **arr)
+void	free_arr(char **arr)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (arr[i])
 	{
 		free(arr[i]);
@@ -161,7 +159,7 @@ void free_arr(char **arr)
 	free(arr);
 }
 
-void free_all(char *str, char **arr, char **arrr)
+void	free_all(char *str, char **arr, char **arrr)
 {
 	free_arr(arrr);
 	free_arr(arr);
@@ -170,15 +168,17 @@ void free_all(char *str, char **arr, char **arrr)
 
 int	main(int ac, char **av)
 {
-	char *str;
+	char	*str;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	**arr;
+	char	**arrr;
 
 	if (ac < 2)
 		return (0);
-    char **arr = read_input(ac, av);
+	arr = read_input(ac, av);
 	str = arry_to_str(ac, arr);
-	char **arrr = ft_split(str, ' ');
+	arrr = ft_split(str, ' ');
 	check_args(arrr);
 	free_all(str, arr, arrr);
 	stack_a = malloc(sizeof(t_stack));
@@ -186,12 +186,7 @@ int	main(int ac, char **av)
 	stack_a->top = NULL;
 	stack_b->top = NULL;
 	creat_stack(stack_a, ac, av);
-	if (is_sorted(stack_a))
-	{
-    	check_moves(stack_a, stack_b);
-		ft_perror("Error");
-	}
-    check_moves(stack_a, stack_b);
+	check_moves(stack_a, stack_b);
 	if (is_empty(stack_a) || !is_empty(stack_b))
 	{
 		clear_stacks(stack_a, stack_b);

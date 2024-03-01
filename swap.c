@@ -52,7 +52,8 @@ void	swap_b(t_stack *stack, char *str)
 
 void	sa_sb(t_stack *stack_a, t_stack *stack_b, char *str)
 {
-	if (stack_a->top != NULL && stack_a->top->next != NULL && stack_b->top != NULL && stack_b->top->next != NULL)
+	if (stack_a->top != NULL && stack_a->top->next != NULL
+		&& stack_b->top != NULL && stack_b->top->next != NULL)
 	{
 		swap_a(stack_a, str);
 		swap_b(stack_b, str);

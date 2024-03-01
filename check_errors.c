@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkheta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 12:01:36 by aelkheta          #+#    #+#             */
-/*   Updated: 2024/03/01 12:01:38 by aelkheta         ###   ########.fr       */
+/*   Created: 2024/03/01 12:00:36 by aelkheta          #+#    #+#             */
+/*   Updated: 2024/03/01 12:00:38 by aelkheta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
+void	ft_perror(char *str)
 {
-	t_list *top;
-	t_list *tmp;
-
-	if (stack->top == NULL)
-		return (0);
-	top = stack->top;
-	tmp = top->next;
-	while (top)
-	{
-		tmp = top->next;
-		while (tmp)
-		{
-			if (top->content > tmp->content)
-				return (0);
-			tmp = tmp->next;
-		}
-		top = top->next;
-	}
-	return (1);
+	ft_printf(str);
+	exit(1);
 }
