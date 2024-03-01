@@ -141,7 +141,7 @@ void check_moves(t_stack *stack_a, t_stack *stack_b)
     char *str;
 
 	str = get_next_line(0);
-    while (str && str[0] != '\n')
+    while (str)
 	{
 		which_move(str, stack_a, stack_b);
 		free(str);
@@ -198,9 +198,8 @@ int	main(int ac, char **av)
 		ft_perror("Error");
 	}
 	if (!is_sorted(stack_a))
-		ft_perror("Error");
+		ft_printf("KO");
 	else
 		ft_printf("Ok");
-	// print_args(stack_a, stack_b);
 	clear_stacks(stack_a, stack_b);
 }
