@@ -17,7 +17,7 @@ void	rotate_a(t_stack *stack, char *str)
 	t_list	*top;
 	t_list	*last;
 
-	if (stack->top && stack->top->next)
+	if (stack->top != NULL && stack->top->next != NULL)
 	{
 		top = stack->top;
 		last = ft_lstlast(stack->top);
@@ -35,7 +35,7 @@ void	rotate_b(t_stack *stack, char *str)
 	t_list	*top;
 	t_list	*last;
 
-	if (stack->top && stack->top->next)
+	if (stack->top != NULL && stack->top->next != NULL)
 	{
 		top = stack->top;
 		last = ft_lstlast(stack->top);
@@ -50,7 +50,7 @@ void	rotate_b(t_stack *stack, char *str)
 
 void	ra_rb(t_stack *stack_a, t_stack *stack_b, char *str)
 {
-	if (stack_a->top && stack_a->top->next && stack_b->top && stack_b->top->next)
+	if (stack_a->top != NULL && stack_a->top->next != NULL && stack_b->top != NULL && stack_b->top->next != NULL)
 	{
 		rotate_a(stack_a, str);
 		rotate_b(stack_b, str);

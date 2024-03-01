@@ -32,6 +32,8 @@ void	check_args(char **av)
                 ft_perror("Error");
 			j++;
 		}
+		if (ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
+			    ft_perror("Error");
 		i++;
 	}
 }
@@ -100,13 +102,13 @@ void	reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b)
 
 void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)
 {
-	if (move[0] == 's')
+	if (move[0] == 's' && ft_strlen(move) == 3)
 		swap(move, stack_a, stack_b);
-	else if (move[0] == 'p')
+	else if (move[0] == 'p' && ft_strlen(move) == 3)
 		push(move, stack_a, stack_b);
 	else if (move[0] == 'r' && ft_strlen(move) == 3)
 		rotate(move, stack_a, stack_b);
-	else if (move[0] == 'r' && move[1] == 'r')
+	else if (move[0] == 'r' && move[1] == 'r' && ft_strlen(move) == 4)
 		reverse_rotate(move, stack_a, stack_b);
 	else
 	{
@@ -152,8 +154,8 @@ int	main(int ac, char **av)
 	str = arry_to_str(ac, arr);
 	char **arrr = ft_split(str, ' ');
 	check_args(arrr);
-	free_arr(arr);
 	free_arr(arrr);
+	free_arr(arr);
 	free(str);
 	stack_a = malloc(sizeof(t_stack));
 	stack_b = malloc(sizeof(t_stack));

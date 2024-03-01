@@ -17,7 +17,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b, char *str)
 	t_list	*top_a;
 	t_list	*top_b;
 
-	if (!is_empty(stack_b))
+	if (stack_b->top != NULL)
 	{
 		top_a = stack_a->top;
 		top_b = stack_b->top;
@@ -36,7 +36,7 @@ void	push_b(t_stack *stack_a, t_stack *stack_b, char *str)
 	t_list	*top_a;
 	t_list	*top_b;
 
-	if (!is_empty(stack_a))
+	if (stack_a->top != NULL)
 	{
 		top_a = stack_a->top;
 		top_b = stack_b->top;
