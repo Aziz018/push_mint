@@ -47,7 +47,9 @@ void	check_args(char **av)
 			ft_perror("Error");
 		while (av[i][j])
 		{
-			if (!ft_isdigit(av[i][j]))
+			if (av[i][0] == '-' && ft_isdigit(av[i][1]))
+				j++;
+			else if (!ft_isdigit(av[i][j]))
 				ft_perror("Error");
 			j++;
 		}

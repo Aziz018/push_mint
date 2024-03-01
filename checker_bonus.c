@@ -27,6 +27,8 @@ void	swap(char *move, t_stack *stack_a, t_stack *stack_b)
 		swap_a(stack_a, "bonus");
 		swap_b(stack_b, "bonus");
 	}
+	else
+		ft_perror("Error");
 }
 void	push(char *move, t_stack *stack_a, t_stack *stack_b)
 {
@@ -34,6 +36,8 @@ void	push(char *move, t_stack *stack_a, t_stack *stack_b)
 		push_a(stack_a, stack_b, "bonus");
 	else if (ft_strstr(move, "pb"))
 		push_b(stack_a, stack_b, "bonus");
+	else
+		ft_perror("Error");
 }
 
 void	rotate(char *move, t_stack *stack_a, t_stack *stack_b)
@@ -47,6 +51,8 @@ void	rotate(char *move, t_stack *stack_a, t_stack *stack_b)
 		rotate_a(stack_a, "bonus");
 		rotate_b(stack_b, "bonus");
 	}
+	else
+		ft_perror("Error");
 }
 
 void	reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b)
@@ -60,6 +66,9 @@ void	reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b)
 		reverse_rotate_a(stack_a, "bonus");
 		reverse_rotate_b(stack_b, "bonus");
 	}
+	else
+		ft_perror("Error");
+
 }
 
 void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)
@@ -73,10 +82,7 @@ void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)
 	else if (move[0] == 'r' && move[1] == 'r' && ft_strlen(move) == 4)
 		reverse_rotate(move, stack_a, stack_b);
 	else
-	{
-		ft_printf("Error");
-		exit(1);
-	}
+		ft_perror("Error");
 }
 
 void	check_moves(t_stack *stack_a, t_stack *stack_b)
@@ -114,13 +120,13 @@ int	main(int ac, char **av)
 	stack_b->top = NULL;
 	creat_stack(stack_a, ac, av);
 	check_moves(stack_a, stack_b);
-	if (is_empty(stack_a) || !is_empty(stack_b))
+	if (!is_sorted(stack_a))
+		ft_printf("KO");
+	else if (is_empty(stack_a) || !is_empty(stack_b))
 	{
 		clear_stacks(stack_a, stack_b);
 		ft_perror("Error");
 	}
-	if (!is_sorted(stack_a))
-		ft_printf("KO");
 	else
 		ft_printf("Ok");
 	clear_stacks(stack_a, stack_b);
