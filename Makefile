@@ -11,6 +11,8 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
+bonus: $(NAME_BONUS)
+
 $(LIBFT):
 	make -C ./libft
 	make bonus -C ./libft
@@ -21,13 +23,11 @@ $(FT_PRINTF):
 $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-bonus: $(NAME_BONUS)
-
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) $^ -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

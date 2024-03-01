@@ -12,6 +12,24 @@ void ft_perror(char *str)
 	exit(1);
 }
 
+void is_duplicated(char **av)
+{
+	int i = 0;
+	int j = 0;
+
+	while (av[i])
+	{
+		j = i + 1;
+		while (av[j])
+		{
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+            	ft_perror("Error");
+			j++;
+		}
+		i++;
+	}
+}
+
 void	check_args(char **av)
 {
 	int	i;
@@ -19,6 +37,7 @@ void	check_args(char **av)
 
 	i = 0;
 	j = 0;
+	is_duplicated(av);
 	while (av[i])
 	{
 		j = 0;
@@ -28,7 +47,7 @@ void	check_args(char **av)
 		{
 			if (!ft_isdigit(av[i][j]))
                 ft_perror("Error");
-            else if (av[i][j] == '\t')
+            if (av[i][j] == '\t')
                 ft_perror("Error");
 			j++;
 		}
@@ -142,6 +161,13 @@ void free_arr(char **arr)
 	free(arr);
 }
 
+void free_all(char *str, char **arr, char **arrr)
+{
+	free_arr(arrr);
+	free_arr(arr);
+	free(str);
+}
+
 int	main(int ac, char **av)
 {
 	char *str;
@@ -154,9 +180,7 @@ int	main(int ac, char **av)
 	str = arry_to_str(ac, arr);
 	char **arrr = ft_split(str, ' ');
 	check_args(arrr);
-	free_arr(arrr);
-	free_arr(arr);
-	free(str);
+	free_all(str, arr, arrr);
 	stack_a = malloc(sizeof(t_stack));
 	stack_b = malloc(sizeof(t_stack));
 	stack_a->top = NULL;
@@ -170,12 +194,11 @@ int	main(int ac, char **av)
     check_moves(stack_a, stack_b);
 	if (is_empty(stack_a) || !is_empty(stack_b))
 	{
-		ft_printf("KO");
 		clear_stacks(stack_a, stack_b);
-		exit(1);
+		ft_perror("Error");
 	}
 	if (!is_sorted(stack_a))
-		ft_printf("KO");
+		ft_perror("Error");
 	else
 		ft_printf("Ok");
 	// print_args(stack_a, stack_b);

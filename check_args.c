@@ -61,21 +61,21 @@ void	check_check(int ac, char **av)
 		while (i < ac)
 		{
 			j = i + 1;
+			if (av[i][0] == '\0')
+			{
+				ft_printf("Error");
+				exit(1);
+			}
 			if (ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
 			{
-				ft_printf("error max or min");
+				ft_printf("Error");
 				exit(1);
 			}
 			while (j < ac)
 			{
-				if (av[i][j] == '\0')
-				{
-					ft_printf("Error");
-					exit(1);
-				}
 				if (ft_atoi(av[i]) == ft_atoi(av[j]))
 				{
-					ft_printf("error duplicated %d", ft_atoi(av[i]));
+					ft_printf("Error");
 					exit(1);
 				}
 				j++;
