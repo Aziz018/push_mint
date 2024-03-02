@@ -12,22 +12,6 @@
 
 #include "push_swap.h"
 
-int	ft_strstr(char *str1, char *str2)
-{
-	int	i;
-
-	i = 0;
-	while (str1[i] != '\n' || str2[i])
-	{
-		if (str1[i] != str2[i])
-			return (0);
-		i++;
-	}
-	if (str1[i] == '\n' && str2[i] == '\0')
-		return (1);
-	return (0);
-}
-
 void	swap(char *move, t_stack *stack_a, t_stack *stack_b)
 {
 	if (ft_strstr(move, "sa"))
@@ -42,6 +26,7 @@ void	swap(char *move, t_stack *stack_a, t_stack *stack_b)
 	else
 		ft_perror("Error");
 }
+
 void	push(char *move, t_stack *stack_a, t_stack *stack_b)
 {
 	if (ft_strstr(move, "pa"))
@@ -82,41 +67,13 @@ void	reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b)
 		ft_perror("Error");
 }
 
-void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)
-{
-	if (move[0] == 's' && ft_strlen(move) == 3)
-		swap(move, stack_a, stack_b);
-	else if (move[0] == 'p' && ft_strlen(move) == 3)
-		push(move, stack_a, stack_b);
-	else if (move[0] == 'r' && ft_strlen(move) == 3)
-		rotate(move, stack_a, stack_b);
-	else if (move[0] == 'r' && move[1] == 'r' && ft_strlen(move) == 4)
-		reverse_rotate(move, stack_a, stack_b);
-	else
-		ft_perror("Error");
-}
-
-void	check_moves(t_stack *stack_a, t_stack *stack_b)
-{
-	char	*str;
-
-	str = get_next_line(0);
-	while (str)
-	{
-		which_move(str, stack_a, stack_b);
-		free(str);
-		str = get_next_line(0);
-	}
-	free(str);
-}
-
 int	main(int ac, char **av)
 {
-	char	*str;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	**arr;
 	char	**arrr;
+	char	**arr;
+	char	*str;
 
 	if (ac < 2)
 		return (0);
@@ -131,14 +88,6 @@ int	main(int ac, char **av)
 	stack_b->top = NULL;
 	creat_stack(stack_a, ac, av);
 	check_moves(stack_a, stack_b);
-	if (!is_sorted(stack_a))
-		ft_printf("KO");
-	else if (is_empty(stack_a) || !is_empty(stack_b))
-	{
-		clear_stacks(stack_a, stack_b);
-		ft_perror("Error");
-	}
-	else
-		ft_printf("Ok");
+	check_stack_element(stack_a, stack_b);
 	clear_stacks(stack_a, stack_b);
 }

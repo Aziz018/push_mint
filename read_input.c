@@ -50,13 +50,11 @@ char	**read_input(int ac, char **av)
 	arr[i - 1] = NULL;
 	return (arr);
 }
-char	*arry_to_str(int ac, char **arr)
+
+int	give_me_len(char **arr)
 {
-	int		i;
-	int		len;
-	char	*str;
-	int		j;
-	int		k;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = 0;
@@ -65,6 +63,18 @@ char	*arry_to_str(int ac, char **arr)
 		len += ft_strlen(arr[i]);
 		i++;
 	}
+	return (len);
+}
+
+char	*arry_to_str(int ac, char **arr)
+{
+	int		i;
+	int		len;
+	char	*str;
+	int		j;
+	int		k;
+
+	len = give_me_len(arr);
 	str = malloc(len * sizeof(char) * ac + 1);
 	i = 0;
 	j = 0;

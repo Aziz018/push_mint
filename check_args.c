@@ -59,42 +59,17 @@ void	check_args(char **av)
 	}
 }
 
-int	find_max(t_stack *stack)
+int	check_range(t_stack *stack_a, int start, int end)
 {
-	int		max;
-	t_list	*tmp;
+	t_list	*top;
 
-	tmp = stack->top;
-	max = 0;
-	if (!is_empty(stack))
+	top = stack_a->top;
+	while (top)
 	{
-		max = tmp->content;
-		while (tmp && tmp->next)
-		{
-			if (max < tmp->next->content)
-				max = tmp->next->content;
-			tmp = tmp->next;
-		}
+		if (top->content >= stack_a->array[start]
+			&& top->content <= stack_a->array[end])
+			return (1);
+		top = top->next;
 	}
-	return (max);
-}
-
-int	find_min(t_stack *stack)
-{
-	int		min;
-	t_list	*tmp;
-
-	min = 0;
-	tmp = stack->top;
-	if (!is_empty(stack))
-	{
-		min = tmp->content;
-		while (tmp && tmp->next)
-		{
-			if (min > tmp->next->content)
-				min = tmp->next->content;
-			tmp = tmp->next;
-		}
-	}
-	return (min);
+	return (0);
 }

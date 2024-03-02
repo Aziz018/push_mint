@@ -7,18 +7,20 @@ FT_PRINTF = ./ft_printf/libftprintf.a
 SRCS = push_swap.c \
 		check_args.c \
 		creat_stack.c \
+		ft_clean.c \
+		help_functions1.c \
+		help_functions2.c \
+		is_sorted.c \
 		operations.c \
+		print_args.c \
 		push.c \
+		read_input.c \
 		reverse_rotate.c \
 		rotate.c \
 		sort.c \
+		stage1.c \
+		stage2.c \
 		swap.c \
-		read_input.c \
-		is_sorted.c \
-		check_errors.c \
-		ft_clean.c \
-		print_args.c \
-		
 
 SRCS_BONUS = checker_bonus.c \
 			check_args.c \
@@ -30,8 +32,10 @@ SRCS_BONUS = checker_bonus.c \
 			swap.c \
 			read_input.c \
 			is_sorted.c \
-			check_errors.c \
 			ft_clean.c \
+			check_errors_bonus.c \
+			help_functions1.c \
+			help_functions2.c \
 			
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)

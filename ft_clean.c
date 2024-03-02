@@ -37,3 +37,9 @@ void	free_all(char *str, char **arr, char **arrr)
 	free_arr(arr);
 	free(str);
 }
+
+void	ft_perror(char *str)
+{
+	ft_printf(str);
+	exit(1);
+}
