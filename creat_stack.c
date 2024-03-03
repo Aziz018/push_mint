@@ -25,23 +25,49 @@ void	free_it(char **strr)
 	free(strr);
 }
 
-void	create_list(t_stack *stack, char **strr)
+int 	create_list(t_stack *stack, char **strr)
 {
 	int		i;
-	t_list	*head;
+	// t_list	*head;
 	t_list	*node;
 
 	i = 0;
-	head = NULL;
+	// head = NULL;
 	while (strr[i])
 	{
 		node = ft_lstnew(ft_atoi(strr[i]));
-		ft_lstadd_back(&head, node);
+		if (!node)
+			return 0;
+		ft_lstadd_back(&stack->top, node);
 		i++;
 	}
-	stack->top = head;
+	// stack->top = head;
 	stack->last = node;
+	return 1;
 }
+
+// void	creat_stack(t_stack *stack, char **strr)
+// {
+// 	int		i;
+// 	t_list	*head;
+// 	t_list	*node;
+
+// 	i = 0;
+// 	head = NULL;
+// 	while (strr[i])
+// 	{
+// 		node = ft_lstnew(ft_atoi(strr[i]));
+// 		if (!node)
+// 		{
+// 			ft_clear_stack(stack);
+// 			ft_perror("Error in lstnew");
+// 		}
+// 		ft_lstadd_back(&stack->top, node);
+// 		i++;
+// 	}
+// 	// stack->top = head;
+// 	stack->last = node;
+// }
 
 void	creat_stack(t_stack *stack, int ac, char **av)
 {
@@ -52,10 +78,13 @@ void	creat_stack(t_stack *stack, int ac, char **av)
 	array = read_input(ac, av);
 	str = arry_to_str(ac, array);
 	strr = ft_split(str, ' ');
-	create_list(stack, strr);
-	free_it(array);
-	free_it(strr);
-	free(str);
+	if (!create_list(stack, strr))
+	{
+		ft_clear_stack(stack);
+		free_all(str, array, strr);
+		ft_perror("fail creat stack");
+	}
+	free_all(str, array, strr);
 }
 
 void	ft_clear_stack(t_stack *stack)

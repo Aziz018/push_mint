@@ -12,8 +12,7 @@
 
 #include "push_swap.h"
 
-
-void clean_all(t_stack *stack_a, t_stack *stack_b)
+void	clean_all(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_clear_stack(stack_a);
 	ft_clear_stack(stack_b);
@@ -30,6 +29,11 @@ int	main(int ac, char **av)
 	arr = read_input(ac, av);
 	str = arry_to_str(ac, arr);
 	arrr = ft_split(str, ' ');
+	if (!arrr)
+	{
+		free_all(str, arr, arrr);
+		ft_perror("split fail");
+	}
 	check_args(arrr, arr, str);
 	free_all(str, arr, arrr);
 	stack_a = malloc(sizeof(t_stack));

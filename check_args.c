@@ -25,15 +25,15 @@ int	is_duplicated(char **av)
 		while (av[j])
 		{
 			if (ft_atoi(av[i]) == ft_atoi(av[j]))
-				return 0;
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return 1;
+	return (1);
 }
 
-void free_all_and_exit(char **av, char **arr, char *str)
+void	free_all_and_exit(char **av, char **arr, char *str)
 {
 	free_all(str, arr, av);
 	ft_perror("Error");

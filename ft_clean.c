@@ -23,7 +23,7 @@ void	free_arr(char **arr)
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (arr && arr[i])
 	{
 		free(arr[i]);
 		i++;
@@ -33,9 +33,12 @@ void	free_arr(char **arr)
 
 void	free_all(char *str, char **arr, char **arrr)
 {
-	free_arr(arrr);
-	free_arr(arr);
-	free(str);
+	if (arrr)
+		free_arr(arrr);
+	if (arr)
+		free_arr(arr);
+	if (str)
+		free(str);
 }
 
 void	ft_perror(char *str)

@@ -20,22 +20,22 @@ int	is_str_empty(char *str)
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (str[i] == '\0')
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-void	free_and_exit(char **strr, int a)
-{
-	int	i;
+// void	free_and_exit(char **strr, int a)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < a && strr != NULL && strr[i] != NULL)
-	{
-		free(strr[i]);
-		i++;
-	}
-	free(strr);
-}
+// 	i = 0;
+// 	while (i < a && strr != NULL && strr[i] != NULL)
+// 	{
+// 		free(strr[i]);
+// 		i++;
+// 	}
+// 	free(strr);
+// }
 
 char	**read_input(int ac, char **av)
 {
@@ -44,6 +44,8 @@ char	**read_input(int ac, char **av)
 	int		j;
 
 	arr = malloc(sizeof(char *) * ac);
+	if (!arr)
+		exit(1);
 	i = 1;
 	j = 0;
 	while (i < ac)
@@ -55,6 +57,11 @@ char	**read_input(int ac, char **av)
 			ft_perror("Error");
 		}
 		arr[i - 1] = malloc(ft_strlen(av[i]) * sizeof(char) + 1);
+		if (arr[i - 1] == NULL)
+		{
+			free_it(arr);
+			ft_perror("Allocation error");
+		}
 		while (av[i][j])
 		{
 			arr[i - 1][j] = av[i][j];
@@ -92,6 +99,11 @@ char	*arry_to_str(int ac, char **arr)
 
 	len = give_me_len(arr);
 	str = malloc(len * sizeof(char) * ac + 1);
+	if (!str)
+	{
+		free_it(arr);
+		ft_perror("Allocation error");
+	}
 	i = 0;
 	j = 0;
 	k = 0;
