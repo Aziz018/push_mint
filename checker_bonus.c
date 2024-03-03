@@ -80,7 +80,12 @@ int	main(int ac, char **av)
 	arr = read_input(ac, av);
 	str = arry_to_str(ac, arr);
 	arrr = ft_split(str, ' ');
-	check_args(arrr);
+	if (!arrr)
+	{
+		free_all(str, arr, arrr);
+		ft_perror("split fail");
+	}
+	check_args(arrr, arr, str);
 	free_all(str, arr, arrr);
 	stack_a = malloc(sizeof(t_stack));
 	stack_b = malloc(sizeof(t_stack));

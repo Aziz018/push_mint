@@ -46,7 +46,7 @@ void		which_move(char *move, t_stack *stack_a, t_stack *stack_b);
 void		check_moves(t_stack *stack_a, t_stack *stack_b);
 
 void		free_it(char **strr);
-int 		create_list(t_stack *stack, char **strr);
+int			create_list(t_stack *stack, char **strr);
 void		creat_stack(t_stack *stack, int ac, char **av);
 void		ft_clear_stack(t_stack *stack);
 

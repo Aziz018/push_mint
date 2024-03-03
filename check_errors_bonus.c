@@ -36,7 +36,11 @@ void	which_move(char *move, t_stack *stack_a, t_stack *stack_b)
 	else if (move[0] == 'r' && move[1] == 'r' && ft_strlen(move) == 4)
 		reverse_rotate(move, stack_a, stack_b);
 	else
+	{
+		free(move);
+		clear_stacks(stack_a, stack_b);
 		ft_perror("Error");
+	}
 }
 
 void	check_moves(t_stack *stack_a, t_stack *stack_b)
@@ -46,9 +50,13 @@ void	check_moves(t_stack *stack_a, t_stack *stack_b)
 	str = get_next_line(0);
 	while (str)
 	{
+		if (str[0] == '\0')
+		{
+			free(str);
+			return ;
+		}
 		which_move(str, stack_a, stack_b);
 		free(str);
 		str = get_next_line(0);
 	}
-	free(str);
 }

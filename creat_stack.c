@@ -25,25 +25,25 @@ void	free_it(char **strr)
 	free(strr);
 }
 
-int 	create_list(t_stack *stack, char **strr)
+int	create_list(t_stack *stack, char **strr)
 {
 	int		i;
-	// t_list	*head;
 	t_list	*node;
 
+	// t_list	*head;
 	i = 0;
 	// head = NULL;
 	while (strr[i])
 	{
 		node = ft_lstnew(ft_atoi(strr[i]));
 		if (!node)
-			return 0;
+			return (0);
 		ft_lstadd_back(&stack->top, node);
 		i++;
 	}
 	// stack->top = head;
 	stack->last = node;
-	return 1;
+	return (1);
 }
 
 // void	creat_stack(t_stack *stack, char **strr)

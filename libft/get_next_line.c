@@ -90,20 +90,18 @@ char	*reach_the_line(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*buffer;
+	char	*line;
+	int		bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE < 1 || BUFFER_SIZE > INT_MAX)
 		return (NULL);
-	buffer = reach_the_line(fd, buffer);
-	if (!buffer)
+	line = malloc(BUFFER_SIZE * sizeof(char));
+	if (!line)
 		return (NULL);
-	line = check_next_line(buffer);
-	buffer = get_the_rest(buffer);
-	if (line[0] == '\0')
-	{
-		free(line);
+	bytes_read = read(fd, line, BUFFER_SIZE);
+	if (bytes_read < 0)
 		return (NULL);
-	}
+	line[bytes_read] = '\0';
+	// line[++bytes_read] = '\0';
 	return (line);
 }

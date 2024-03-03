@@ -35,13 +35,13 @@ void	over_10(t_stack *stack_a, t_stack *stack_b)
 
 	if (stack_a->size <= 100)
 	{
-		offset = stack_a->size / 10;
+		offset = stack_a->size / 11;
 		stage_1(stack_a, stack_b, offset);
-		stage_2(stack_a, stack_b);
+		stage_3(stack_a, stack_b);
 	}
 	else
 	{
-		offset = stack_a->size / 18;
+		offset = stack_a->size / 16;
 		stage_1(stack_a, stack_b, offset);
 		stage_3(stack_a, stack_b);
 	}

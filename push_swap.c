@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	stack_a->min = find_min(stack_a);
 	stack_a->size = ft_lstsize(stack_a->top);
 	sort_args(stack_a, stack_b);
-	print_args(stack_a, stack_b);
-	clean_all(stack_a, stack_b);
+	// print_args(stack_a, stack_b);
+	clean_all(stack_a, stack_b);	
 	return (0);
 }
