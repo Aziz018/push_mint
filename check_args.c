@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	is_duplicated(char **av)
+int	is_duplicated(char **av)
 {
 	int	i;
 	int	j;
@@ -25,36 +25,44 @@ void	is_duplicated(char **av)
 		while (av[j])
 		{
 			if (ft_atoi(av[i]) == ft_atoi(av[j]))
-				ft_perror("Error");
+				return 0;
 			j++;
 		}
 		i++;
 	}
+	return 1;
 }
 
-void	check_args(char **av)
+void free_all_and_exit(char **av, char **arr, char *str)
+{
+	free_all(str, arr, av);
+	ft_perror("Error");
+}
+
+void	check_args(char **av, char **arr, char *str)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	is_duplicated(av);
+	if (!is_duplicated(av))
+		free_all_and_exit(av, arr, str);
 	while (av[i])
 	{
 		j = 0;
 		if (ft_strlen(av[i]) > 11)
-			ft_perror("Error");
+			free_all_and_exit(av, arr, str);
 		while (av[i][j])
 		{
 			if (av[i][0] == '-' && ft_isdigit(av[i][1]))
 				j++;
 			else if (!ft_isdigit(av[i][j]))
-				ft_perror("Error");
+				free_all_and_exit(av, arr, str);
 			j++;
 		}
 		if (ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
-			ft_perror("Error");
+			free_all_and_exit(av, arr, str);
 		i++;
 	}
 }

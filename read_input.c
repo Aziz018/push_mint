@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	is_str_empty(char *str)
+int	is_str_empty(char *str)
 {
 	int	i;
 
@@ -20,7 +20,21 @@ void	is_str_empty(char *str)
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (str[i] == '\0')
-		ft_perror("Error");
+		return 1;
+	return 0;
+}
+
+void	free_and_exit(char **strr, int a)
+{
+	int	i;
+
+	i = 0;
+	while (i < a && strr != NULL && strr[i] != NULL)
+	{
+		free(strr[i]);
+		i++;
+	}
+	free(strr);
 }
 
 char	**read_input(int ac, char **av)
@@ -35,9 +49,11 @@ char	**read_input(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
-		is_str_empty(av[i]);
-		if (av[i][0] == '\0')
+		if (is_str_empty(av[i]))
+		{
+			free_it(arr);
 			ft_perror("Error");
+		}
 		arr[i - 1] = malloc(ft_strlen(av[i]) * sizeof(char) + 1);
 		while (av[i][j])
 		{

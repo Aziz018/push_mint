@@ -17,7 +17,7 @@ void	free_it(char **strr)
 	int	i;
 
 	i = 0;
-	while (strr[i])
+	while (strr != NULL && strr[i] != NULL)
 	{
 		free(strr[i]);
 		i++;

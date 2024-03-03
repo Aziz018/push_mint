@@ -62,6 +62,7 @@ $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(FT_PRINTF)
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_BONUS)
 	make -C ./libft clean
 	make -C ./ft_printf clean
 

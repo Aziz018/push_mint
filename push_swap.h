@@ -36,8 +36,8 @@ typedef struct s_stack
 	t_list	*last;
 }			t_stack;
 
-void		is_duplicated(char **av);
-void		check_args(char **av);
+int			is_duplicated(char **av);
+void		check_args(char **av, char **arr, char *str);
 int			check_range(t_stack *stack_a, int start, int end);
 
 void		ft_perror(char *str);
@@ -85,7 +85,7 @@ void		ra_rb(t_stack *stack_a, t_stack *stack_b, char *str);
 
 // handle the read input
 
-void		is_str_empty(char *str);
+int			is_str_empty(char *str);
 char		**read_input(int ac, char **av);
 int			give_me_len(char **arr);
 char		*arry_to_str(int ac, char **arr);
@@ -114,6 +114,12 @@ void		swap(char *move, t_stack *stack_a, t_stack *stack_b);
 void		push(char *move, t_stack *stack_a, t_stack *stack_b);
 void		rotate(char *move, t_stack *stack_a, t_stack *stack_b);
 void		reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b);
+
+
+void 		clean_all(t_stack *stack_a, t_stack *stack_b);
+
+
+
 
 // int			*find_lis_sequence(t_stack *stack, int *len);
 

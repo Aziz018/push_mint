@@ -16,9 +16,7 @@ void	under_10(t_stack *stack_a, t_stack *stack_b)
 {
 	int	offset;
 
-	if (is_sorted(stack_a))
-		exit(0);
-	else if (stack_a->size <= 3)
+	if (stack_a->size <= 3)
 		sort_3(stack_a);
 	else if (stack_a->size <= 5)
 		sort_5(stack_a, stack_b);
@@ -51,7 +49,12 @@ void	over_10(t_stack *stack_a, t_stack *stack_b)
 
 void	sort_args(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->top == NULL)
+	if (is_sorted(stack_a))
+	{
+		clean_all(stack_a, stack_b);
+		exit(0);
+	}
+	else if (stack_a->top == NULL)
 		exit(0);
 	else if (stack_a->size <= 10)
 		under_10(stack_a, stack_b);
