@@ -75,15 +75,8 @@ void	stage_1(t_stack *stack_a, t_stack *stack_b, int offset)
 			push_and_rotate(stack_a, stack_b, middle);
 		else
 		{
-			int index = check_range(stack_a, start, end);
-			if (index != -1)
-			{
-				while (index)
-				{
-					rotate_a(stack_a, NULL);
-					index--;
-				}
-			}
+			if (check_range(stack_a, start, end) != -1)
+				rotate_a(stack_a, NULL);
 			else
 				update_range(&start, &end, offset, size);
 		}

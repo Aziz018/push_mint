@@ -60,3 +60,11 @@ void	check_moves(t_stack *stack_a, t_stack *stack_b)
 		str = get_next_line(0);
 	}
 }
+
+void	main_continue(t_stack *stack_a, t_stack *stack_b, int ac, char **av)
+{
+	creat_stack(stack_a, ac, av);
+	check_moves(stack_a, stack_b);
+	check_stack_element(stack_a, stack_b);
+	clear_stacks(stack_a, stack_b);
+}

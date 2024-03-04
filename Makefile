@@ -61,17 +61,17 @@ $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(OBJS_BONUS)
-	make -C ./libft clean
-	make -C ./ft_printf clean
+	rm -f $(OBJS)
+	rm -f $(OBJS_BONUS)
+	make clean -C ./libft
+	make clean -C ./ft_printf
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) checker
-	make -C ./libft fclean
-	make -C ./ft_printf fclean
+	rm -f $(NAME)
+	rm -f checker
+	make fclean -C ./libft
+	make fclean -C ./ft_printf
 
 re: fclean all
 
-.SECONDARY:
+.PHONY: all bonus clean fclean

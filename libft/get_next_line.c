@@ -102,6 +102,5 @@ char	*get_next_line(int fd)
 	if (bytes_read < 0)
 		return (NULL);
 	line[bytes_read] = '\0';
-	// line[++bytes_read] = '\0';
 	return (line);
 }

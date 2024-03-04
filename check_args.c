@@ -69,9 +69,10 @@ void	check_args(char **av, char **arr, char *str)
 
 int	check_range(t_stack *stack_a, int start, int end)
 {
-	int i = 0;
+	int		i;
 	t_list	*top;
 
+	i = 0;
 	top = stack_a->top;
 	while (top)
 	{

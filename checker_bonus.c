@@ -91,8 +91,5 @@ int	main(int ac, char **av)
 	stack_b = malloc(sizeof(t_stack));
 	stack_a->top = NULL;
 	stack_b->top = NULL;
-	creat_stack(stack_a, ac, av);
-	check_moves(stack_a, stack_b);
-	check_stack_element(stack_a, stack_b);
-	clear_stacks(stack_a, stack_b);
+	main_continue(stack_a, stack_b, ac, av);
 }

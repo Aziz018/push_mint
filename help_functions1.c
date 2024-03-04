@@ -86,3 +86,18 @@ int	find_min(t_stack *stack)
 	}
 	return (min);
 }
+
+int	give_me_len(char **arr)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = 0;
+	while (arr[i] != NULL)
+	{
+		len += ft_strlen(arr[i]);
+		i++;
+	}
+	return (len);
+}

@@ -18,6 +18,13 @@ void	clean_all(t_stack *stack_a, t_stack *stack_b)
 	ft_clear_stack(stack_b);
 }
 
+void	initiate_stack(t_stack *stack_a)
+{
+	stack_a->max = find_max(stack_a);
+	stack_a->min = find_min(stack_a);
+	stack_a->size = ft_lstsize(stack_a->top);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
@@ -41,11 +48,8 @@ int	main(int ac, char **av)
 	stack_a->top = NULL;
 	stack_b->top = NULL;
 	creat_stack(stack_a, ac, av);
-	stack_a->max = find_max(stack_a);
-	stack_a->min = find_min(stack_a);
-	stack_a->size = ft_lstsize(stack_a->top);
+	initiate_stack(stack_a);
 	sort_args(stack_a, stack_b);
-	// print_args(stack_a, stack_b);
-	clean_all(stack_a, stack_b);	
+	clean_all(stack_a, stack_b);
 	return (0);
 }

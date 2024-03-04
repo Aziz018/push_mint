@@ -117,6 +117,8 @@ void		reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b);
 
 void		clean_all(t_stack *stack_a, t_stack *stack_b);
 
+void		main_continue(t_stack *stack_a, t_stack *stack_b, int ac,
+				char **av);
 // int			*find_lis_sequence(t_stack *stack, int *len);
 
 #endif

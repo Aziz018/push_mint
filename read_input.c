@@ -24,18 +24,20 @@ int	is_str_empty(char *str)
 	return (0);
 }
 
-// void	free_and_exit(char **strr, int a)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < a && strr != NULL && strr[i] != NULL)
-// 	{
-// 		free(strr[i]);
-// 		i++;
-// 	}
-// 	free(strr);
-// }
+void	check_input_and_allocate(char **av, char **arr, int i)
+{
+	if (is_str_empty(av[i]))
+	{
+		free_it(arr);
+		ft_perror("Error");
+	}
+	arr[i - 1] = malloc(ft_strlen(av[i]) * sizeof(char) + 1);
+	if (arr[i - 1] == NULL)
+	{
+		free_it(arr);
+		ft_perror("Allocation error");
+	}
+}
 
 char	**read_input(int ac, char **av)
 {
@@ -51,17 +53,7 @@ char	**read_input(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
-		if (is_str_empty(av[i]))
-		{
-			free_it(arr);
-			ft_perror("Error");
-		}
-		arr[i - 1] = malloc(ft_strlen(av[i]) * sizeof(char) + 1);
-		if (arr[i - 1] == NULL)
-		{
-			free_it(arr);
-			ft_perror("Allocation error");
-		}
+		check_input_and_allocate(av, arr, i);
 		while (av[i][j])
 		{
 			arr[i - 1][j] = av[i][j];
@@ -74,36 +66,12 @@ char	**read_input(int ac, char **av)
 	return (arr);
 }
 
-int	give_me_len(char **arr)
+void	copy_args(char **arr, char *str)
 {
 	int	i;
-	int	len;
+	int	j;
+	int	k;
 
-	i = 0;
-	len = 0;
-	while (arr[i] != NULL)
-	{
-		len += ft_strlen(arr[i]);
-		i++;
-	}
-	return (len);
-}
-
-char	*arry_to_str(int ac, char **arr)
-{
-	int		i;
-	int		len;
-	char	*str;
-	int		j;
-	int		k;
-
-	len = give_me_len(arr);
-	str = malloc(len * sizeof(char) * ac + 1);
-	if (!str)
-	{
-		free_it(arr);
-		ft_perror("Allocation error");
-	}
 	i = 0;
 	j = 0;
 	k = 0;
@@ -119,5 +87,20 @@ char	*arry_to_str(int ac, char **arr)
 		i++;
 	}
 	str[k] = '\0';
+}
+
+char	*arry_to_str(int ac, char **arr)
+{
+	int		len;
+	char	*str;
+
+	len = give_me_len(arr);
+	str = malloc(len * sizeof(char) * ac + 1);
+	if (!str)
+	{
+		free_it(arr);
+		ft_perror("Allocation error");
+	}
+	copy_args(arr, str);
 	return (str);
 }
