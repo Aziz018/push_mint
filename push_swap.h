@@ -98,9 +98,9 @@ void		sort_5_case(t_stack *stack_a, t_stack *stack_b,
 				void (*operation)(t_stack *, char *));
 void		sort_5(t_stack *stack_a, t_stack *stack_b);
 void		stage_1(t_stack *stack_a, t_stack *stack_b, int offset);
-void		stage_2(t_stack *stack_a, t_stack *stack_b);
+// void		stage_2(t_stack *stack_a, t_stack *stack_b);
 void		do_it(t_stack *stack_a, t_stack *stack_b);
-void		stage_3(t_stack *stack_a, t_stack *stack_b);
+void		stage_2(t_stack *stack_a, t_stack *stack_b);
 void		swap_a(t_stack *stack, char *str);
 void		swap_b(t_stack *stack, char *str);
 void		sa_sb(t_stack *stack_a, t_stack *stack_b, char *str);

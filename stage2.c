@@ -12,23 +12,6 @@
 
 #include "push_swap.h"
 
-void	stage_2(t_stack *stack_a, t_stack *stack_b)
-{
-	stack_a->size -= 1;
-	push_max_element(stack_a, stack_b);
-	while (stack_b->top && stack_a->size >= 0)
-	{
-		if (stack_b->top->content == stack_a->array[stack_a->size])
-		{
-			push_a(stack_a, stack_b, NULL);
-			stack_a->size -= 1;
-		}
-		else
-			find_max_push_it(stack_a, stack_b);
-	}
-	free(stack_a->array);
-}
-
 t_list	*is_exist(t_stack *stack, int element)
 {
 	t_list	*top;
@@ -71,7 +54,7 @@ void	do_it(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void	stage_3(t_stack *stack_a, t_stack *stack_b)
+void	stage_2(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_a->size -= 1;
 	stack_b->max = stack_a->array[stack_a->size];

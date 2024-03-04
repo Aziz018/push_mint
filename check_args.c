@@ -53,11 +53,11 @@ void	check_args(char **av, char **arr, char *str)
 		j = 0;
 		if (ft_strlen(av[i]) > 11)
 			free_all_and_exit(av, arr, str);
-		while (av[i][j])
-		{
-			if (av[i][0] == '-' && ft_isdigit(av[i][1]))
+		if ((av[i][0] == '-' || av[i][0] == '+') && ft_isdigit(av[i][1]))
 				j++;
-			else if (!ft_isdigit(av[i][j]))
+		while (av && av[i] && av[i][j])
+		{
+			if (!ft_isdigit(av[i][j]))
 				free_all_and_exit(av, arr, str);
 			j++;
 		}
