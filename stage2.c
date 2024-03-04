@@ -29,6 +29,20 @@ void	stage_2(t_stack *stack_a, t_stack *stack_b)
 	free(stack_a->array);
 }
 
+t_list *is_exist(t_stack *stack, int element)
+{
+	t_list *top;
+
+	top = stack->top;
+	while(top)
+	{
+		if (top->content == element)
+			return top;
+		top = top->next;
+	}
+	return NULL;
+}
+
 void	do_it(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_b->top->content == stack_a->array[stack_a->size])
@@ -38,18 +52,28 @@ void	do_it(t_stack *stack_a, t_stack *stack_b)
 	}
 	else
 	{
-		if (stack_a->last->content == stack_b->max)
+		if (stack_a->last->content == stack_b->max || stack_b->top->content > stack_a->last->content)
 		{
 			push_a(stack_a, stack_b, NULL);
 			rotate_a(stack_a, NULL);
 		}
-		else if (stack_a->last->content == stack_a->array[stack_a->size])
+		else if (stack_b->top->content < stack_a->last->content)
 		{
-			reverse_rotate_a(stack_a, NULL);
-			stack_a->size -= 1;
+			if (is_exist(stack_b, stack_a->array[stack_a->size]))
+				find_max_push_it(stack_a, stack_b);
+			else
+			{
+				reverse_rotate_a(stack_a, NULL);
+				stack_a->size -= 1;
+			}
+
 		}
-		else
-			find_max_push_it(stack_a, stack_b);
+		// else if (stack_a->last->content == stack_a->array[stack_a->size])
+		// {
+		// 	reverse_rotate_a(stack_a, NULL);
+		// 	stack_a->size -= 1;
+		// }
+		// else
 	}
 }
 

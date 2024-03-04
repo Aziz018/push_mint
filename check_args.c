@@ -69,6 +69,7 @@ void	check_args(char **av, char **arr, char *str)
 
 int	check_range(t_stack *stack_a, int start, int end)
 {
+	int i = 0;
 	t_list	*top;
 
 	top = stack_a->top;
@@ -76,8 +77,9 @@ int	check_range(t_stack *stack_a, int start, int end)
 	{
 		if (top->content >= stack_a->array[start]
 			&& top->content <= stack_a->array[end])
-			return (1);
+			return (i);
 		top = top->next;
+		i++;
 	}
-	return (0);
+	return (-1);
 }

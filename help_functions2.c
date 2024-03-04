@@ -57,9 +57,16 @@ void	update_range(int *start, int *end, int offset, int size)
 
 void	push_max_element(t_stack *stack_a, t_stack *stack_b)
 {
-	while (stack_b->top->content != stack_a->array[stack_a->size])
+	stack_a->index = find_index(stack_b, stack_b->max);
+	if (stack_a->index < stack_a->size / 2)
 	{
-		rotate_b(stack_b, NULL);
+		while (stack_b->top->content != stack_a->array[stack_a->size])
+			rotate_b(stack_b, NULL);
+	}
+	else
+	{
+		while (stack_b->top->content != stack_a->array[stack_a->size])
+			reverse_rotate_b(stack_b, NULL);
 	}
 	push_a(stack_a, stack_b, NULL);
 	stack_a->size -= 1;

@@ -33,7 +33,7 @@ int	find_index(t_stack *stack, int num)
 void	find_max_push_it(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_b->index = find_index(stack_b, stack_a->array[stack_a->size]);
-	if (stack_b->index > (stack_a->size / 2))
+	if (stack_b->index >= (stack_a->size / 2))
 	{
 		while (stack_b->top->content != stack_a->array[stack_a->size])
 			reverse_rotate_b(stack_b, NULL);
