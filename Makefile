@@ -61,16 +61,18 @@ $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(OBJS_BONUS)
-	make clean -C ./libft
-	make clean -C ./ft_printf
+	@rm -f $(OBJS)
+	@rm -f $(OBJS_BONUS)
+	@make -s clean -C ./libft
+	@make -s clean -C ./ft_printf
+	@echo "clean done"
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f checker
-	make fclean -C ./libft
-	make fclean -C ./ft_printf
+	@rm -f $(NAME)
+	@rm -f checker
+	@make -s fclean -C ./libft
+	@make -s fclean -C ./ft_printf
+	@echo "fclean done"
 
 re: fclean all
 

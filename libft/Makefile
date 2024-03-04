@@ -80,10 +80,10 @@ $(OBJS_B): $(SRCS_B)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS_M) $(OBJS_B)
+	@rm -f $(OBJS_M) $(OBJS_B)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all bonus
 
