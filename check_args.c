@@ -32,6 +32,16 @@ int	is_duplicated(char **av)
 	}
 	return (1);
 }
+void check_empty_arg(int ac, char **av)
+{
+	int i = 0;
+	while (i < ac)
+	{
+		if (is_str_empty(av[i]))
+			ft_perror("Error");
+		i++;
+	}
+}
 
 void	free_all_and_exit(char **av, char **arr, char *str)
 {
@@ -53,7 +63,7 @@ void	check_args(char **av, char **arr, char *str)
 		j = 0;
 		if (ft_strlen(av[i]) > 11)
 			free_all_and_exit(av, arr, str);
-		if ((av[i][0] == '-' || av[i][0] == '+') && ft_isdigit(av[i][1]))
+		if (av[i][0] == '-' && ft_isdigit(av[i][1]))
 				j++;
 		while (av && av[i] && av[i][j])
 		{

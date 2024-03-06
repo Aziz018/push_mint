@@ -39,6 +39,7 @@ typedef struct s_stack
 int			is_duplicated(char **av);
 void		check_args(char **av, char **arr, char *str);
 int			check_range(t_stack *stack_a, int start, int end);
+void 		check_empty_arg(int ac, char **av);
 
 void		ft_perror(char *str);
 void		check_stack_element(t_stack *stack_a, t_stack *stack_b);
@@ -98,9 +99,8 @@ void		sort_5_case(t_stack *stack_a, t_stack *stack_b,
 				void (*operation)(t_stack *, char *));
 void		sort_5(t_stack *stack_a, t_stack *stack_b);
 void		stage_1(t_stack *stack_a, t_stack *stack_b, int offset);
-// void		stage_2(t_stack *stack_a, t_stack *stack_b);
-void		do_it(t_stack *stack_a, t_stack *stack_b);
 void		stage_2(t_stack *stack_a, t_stack *stack_b);
+void		do_it(t_stack *stack_a, t_stack *stack_b);
 void		swap_a(t_stack *stack, char *str);
 void		swap_b(t_stack *stack, char *str);
 void		sa_sb(t_stack *stack_a, t_stack *stack_b, char *str);
@@ -114,11 +114,8 @@ void		swap(char *move, t_stack *stack_a, t_stack *stack_b);
 void		push(char *move, t_stack *stack_a, t_stack *stack_b);
 void		rotate(char *move, t_stack *stack_a, t_stack *stack_b);
 void		reverse_rotate(char *move, t_stack *stack_a, t_stack *stack_b);
-
 void		clean_all(t_stack *stack_a, t_stack *stack_b);
-
 void		main_continue(t_stack *stack_a, t_stack *stack_b, int ac,
 				char **av);
-// int			*find_lis_sequence(t_stack *stack, int *len);
 
 #endif

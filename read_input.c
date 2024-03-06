@@ -24,13 +24,8 @@ int	is_str_empty(char *str)
 	return (0);
 }
 
-void	check_input_and_allocate(char **av, char **arr, int i)
+void	allocate_arr(char **av, char **arr, int i)
 {
-	if (is_str_empty(av[i]))
-	{
-		free_it(arr);
-		ft_perror("Error");
-	}
 	arr[i - 1] = malloc(ft_strlen(av[i]) * sizeof(char) + 1);
 	if (arr[i - 1] == NULL)
 	{
@@ -45,6 +40,7 @@ char	**read_input(int ac, char **av)
 	int		i;
 	int		j;
 
+	check_empty_arg(ac, av);
 	arr = malloc(sizeof(char *) * ac);
 	if (!arr)
 		exit(1);
@@ -53,7 +49,7 @@ char	**read_input(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
-		check_input_and_allocate(av, arr, i);
+		allocate_arr(av, arr, i);
 		while (av[i][j])
 		{
 			arr[i - 1][j] = av[i][j];

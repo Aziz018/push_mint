@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 NAME = push_swap
 NAME_BONUS = checker
 LIBFT = ./libft/libft.a
