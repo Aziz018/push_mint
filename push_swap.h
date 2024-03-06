@@ -39,7 +39,7 @@ typedef struct s_stack
 int			is_duplicated(char **av);
 void		check_args(char **av, char **arr, char *str);
 int			check_range(t_stack *stack_a, int start, int end);
-void 		check_empty_arg(int ac, char **av);
+void		check_empty_arg(int ac, char **av);
 
 void		ft_perror(char *str);
 void		check_stack_element(t_stack *stack_a, t_stack *stack_b);
