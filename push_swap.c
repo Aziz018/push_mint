@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	creat_stack(stack_a, ac, av);
 	initiate_stack(stack_a);
 	sort_args(stack_a, stack_b);
-	// print_args(stack_a, stack_b);
+	print_args(stack_a, stack_b);
 	clean_all(stack_a, stack_b);
 	return (0);
 }
