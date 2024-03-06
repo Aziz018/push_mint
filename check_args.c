@@ -6,7 +6,7 @@
 /*   By: aelkheta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 06:07:20 by aelkheta          #+#    #+#             */
-/*   Updated: 2024/02/12 06:07:22 by aelkheta         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:18:48 by aelkheta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	is_duplicated(char **av)
 	}
 	return (1);
 }
+
 void	check_empty_arg(int ac, char **av)
 {
 	int	i;
@@ -65,7 +66,7 @@ void	check_args(char **av, char **arr, char *str)
 		j = 0;
 		if (ft_strlen(av[i]) > 11)
 			free_all_and_exit(av, arr, str);
-		if (av[i][0] == '-' && ft_isdigit(av[i][1]))
+		if ((av[i][0] == '-' || av[i][0] == '+') && ft_isdigit(av[i][1]))
 			j++;
 		while (av && av[i] && av[i][j])
 		{
