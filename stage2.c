@@ -63,7 +63,7 @@ void	stage_2(t_stack *stack_a, t_stack *stack_b)
 	{
 		do_it(stack_a, stack_b);
 	}
-	if (stack_a->last->content < stack_a->top->content)
+	while (stack_a->last->content < stack_a->top->content)
 		reverse_rotate_a(stack_a, NULL);
 	free(stack_a->array);
 }
