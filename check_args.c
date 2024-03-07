@@ -38,6 +38,8 @@ void	check_empty_arg(int ac, char **av)
 	int	i;
 
 	i = 0;
+	if (ac < 2)
+		exit(0);
 	while (i < ac)
 	{
 		if (is_str_empty(av[i]))

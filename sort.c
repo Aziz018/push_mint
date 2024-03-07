@@ -25,7 +25,6 @@ void	under_10(t_stack *stack_a, t_stack *stack_b)
 		offset = 2;
 		stage_1(stack_a, stack_b, offset);
 		stage_2(stack_a, stack_b);
-		print_args(stack_a, stack_b);
 	}
 }
 
