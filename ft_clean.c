@@ -44,5 +44,5 @@ void	free_all(char *str, char **arr, char **arrr)
 void	ft_perror(char *str)
 {
 	ft_putstr_fd(str, 2);
-	exit(1);
+	exit(255);
 }
