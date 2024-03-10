@@ -15,7 +15,7 @@ NC='\033[0m'
 
 
 if [[ $# -ne 4 ]]; then
-    echo "USAGE (need 4 ARGS): 
+    echo "We need 4 arguments: 
     ./test.sh [arg1: test count] [arg2: number of args]
     [arg1: min of range] [arg2: max of range]"
     exit 1
